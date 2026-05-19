@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SignUpPage from './features/auth/SignUpPage.tsx';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WalletPage from './features/dashboard/WalletPage.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/register" element={<SignUpPage />}/>
         {/* หน้าแรกให้วิ่งไป Login */}
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/wallet" element={<WalletPage />}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -11,14 +11,16 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault(); // ป้องกันหน้าเว็บ Refresh
         try {
-        const response = await axios.post('http://127.0.0.1:8081/api/v1/users/login', { username, password });
-        console.log('Login Success');
-        localStorage.setItem('jwt', response.data.jwtCode);
-        navigate('/dashboard');
+            const response = await axios.post('http://127.0.0.1:8081/api/v1/users/login', { username, password });
+            console.log('Login Success');
+            localStorage.setItem('jwt', response.data.jwtCode);
+            navigate('/wallet');
         } catch (error) {
-        console.error('Login Failed:', error);
+            console.error('Login Failed:', error);
         }
     };
+
+    
 const styles = {
     container: {
       minHeight: '100vh',

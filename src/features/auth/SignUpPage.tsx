@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { apiRequest } from '../../utils/apiUtils'; // Adjust the import path as needed
 
 // อย่าลืม import CSS ของตัว Library ด้วยครับ
 import "react-datepicker/dist/react-datepicker.css";
@@ -36,12 +37,11 @@ const SignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // แนะนำมาตรฐานอุตสาหกรรม: ใช้ Axios สำหรับยิง API
-      const response = await axios.post('http://127.0.0.1:8081/api/v1/users/register', formData);
-      console.log('Success:', response.data);
+      await apiRequest('http://127.0.0.1:8081/api/v1/users/register', 'POST', formData);
       navigate('/login');
     } catch (error) {
       console.error('Error:', error);
+      // Optionally, you can show an error message to the user here
     }
   };
 
